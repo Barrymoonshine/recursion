@@ -23,6 +23,27 @@ const fibs = (num) => {
   return array;
 };
 
+// const num = 8;
+
+// console.log(fibs(num));
+
+// Assignment 1.2
+// Now write another method fibsRec which solves the same problem recursively
+
+const fibsRec = (num) => {
+  if (num === 0) {
+    return [0];
+  }
+  if (num <= 2) {
+    return [0, 1];
+  }
+  const prevFibsArray = fibsRec(num - 1);
+  const currentFib =
+    prevFibsArray[prevFibsArray.length - 1] +
+    prevFibsArray[prevFibsArray.length - 2];
+  return [...prevFibsArray, currentFib];
+};
+
 const num = 8;
 
-console.log(fibs(num));
+console.log(fibsRec(num));
