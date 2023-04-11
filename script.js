@@ -50,18 +50,41 @@ const fibsRec = (num) => {
 // Build a function mergeSort that takes in an array and returns a sorted array,
 // using a recursive merge sort methodology
 
-const merge = (leftSubArray, rightSubArray) => {
-  const newArray = [];
+const mergeSort = (arr) => {
+  const merge = (leftSubArray, rightSubArray) => {
+    const newArray = [];
 
-  while (leftSubArray.length && rightSubArray.length) {
-    if (leftSubArray[0] < rightSubArray[0]) {
-      newArray.push(leftSubArray.shift());
-    } else {
-      newArray.push(rightSubArray.shift());
+    while (leftSubArray.length && rightSubArray.length) {
+      if (leftSubArray[0] < rightSubArray[0]) {
+        newArray.push(leftSubArray.shift());
+      } else {
+        newArray.push(rightSubArray.shift());
+      }
     }
+
+    return [...newArray, ...leftSubArray, ...rightSubArray];
+  };
+
+  const arrayLength = arr.length;
+
+  const middleOfArray = Math.round(arrayLength / 2);
+  const leftSubArray = arr.slice(0, middleOfArray);
+  const rightSubArray = arr.slice(middleOfArray, arrayLength);
+
+  if (arrayLength <= 1) {
+    return arr;
   }
 
-  return [...newArray, ...leftSubArray, ...rightSubArray];
+  console.log(`leftSubArray: ${leftSubArray}`);
+  console.log(`rightSubArray ${rightSubArray}`);
+
+  const left = mergeSort(leftSubArray);
+  const right = mergeSort(rightSubArray);
+
+  console.log(`left: ${left}`);
+  console.log(`rightSubArray ${right}`);
+
+  return merge(left, right);
 };
 
-console.log(merge([1, 4], [2, 6, 9]));
+console.log(mergeSort([1, 8, 2, 8, 6, 4, 3]));
