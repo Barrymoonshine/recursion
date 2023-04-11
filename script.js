@@ -7,25 +7,21 @@
 
 const fibs = (num) => {
   const array = [];
-  let fib = 0;
-
   for (let i = 0; i < num; i++) {
     if (i === 0) {
-      array.push(i);
+      array[i] = 0;
     } else if (i <= 2) {
-      array.push(1);
+      array[i] = 1;
     } else if (i > 2) {
-      fib = array[i - 1] + array[i - 2];
-      array.push(fib);
+      array[i] = array[i - 1] + array[i - 2];
     }
   }
-
   return array;
 };
 
 // const num = 8;
 
-// console.log(fibs(num));
+// console.log(fibs(num)); // [0, 1, 1, 2, 3, 5, 8, 13]
 
 // Assignment 1.2
 // Now write another method fibsRec which solves the same problem recursively
@@ -44,6 +40,28 @@ const fibsRec = (num) => {
   return [...prevFibsArray, currentFib];
 };
 
-const num = 8;
+// console.log(fibsRec(8)); // [0, 1, 1, 2, 3, 5, 8, 13]
 
-console.log(fibsRec(num));
+// fibsRec(4) = new array from fibsRec(3) = [0,1,1] + [2]
+//  fibsRec(3) = new array fibsRec(2) = [0,1] + [1]
+//    fibsRec(2) = [0,1]
+
+// Assignment 2
+// Build a function mergeSort that takes in an array and returns a sorted array,
+// using a recursive merge sort methodology
+
+const merge = (leftSubArray, rightSubArray) => {
+  const newArray = [];
+
+  while (leftSubArray.length && rightSubArray.length) {
+    if (leftSubArray[0] < rightSubArray[0]) {
+      newArray.push(leftSubArray.shift());
+    } else {
+      newArray.push(rightSubArray.shift());
+    }
+  }
+
+  return [...newArray, ...leftSubArray, ...rightSubArray];
+};
+
+console.log(merge([1, 4], [2, 6, 9]));
