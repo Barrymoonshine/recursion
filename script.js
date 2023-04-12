@@ -82,7 +82,7 @@ const mergeSort = (arr) => {
   const right = mergeSort(rightSubArray);
 
   console.log(`left: ${left}`);
-  console.log(`rightSubArray ${right}`);
+  console.log(`right ${right}`);
 
   return merge(left, right);
 };
