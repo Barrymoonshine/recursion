@@ -16,3 +16,4 @@ This project was completed as part of the [The Odin Project](https://www.theodin
 - Using functions that call recursively call themselves to solve a programming problem
 - Setting a base case so that the recursive loop is exited and the call stack maximum size is not exceeded
 - Divide and conquer algorithms
+- Using the spread operator to concatenate a new array
